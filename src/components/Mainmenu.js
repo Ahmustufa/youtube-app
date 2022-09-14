@@ -16,8 +16,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
@@ -26,6 +24,8 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HistoryIcon from '@mui/icons-material/History';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import Searching from './Searching';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -169,7 +169,8 @@ export default function MiniDrawer(props) {
           </IconButton>
           <Typography variant="h6" noWrap component="div" >
             MYoutube
-          </Typography>
+          </Typography>  
+          {/* <Searching/> */}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -240,6 +241,7 @@ export default function MiniDrawer(props) {
             props.children
         }
       </Box>
+      
     </Box>
   );
 }

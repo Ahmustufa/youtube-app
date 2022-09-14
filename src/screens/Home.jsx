@@ -4,8 +4,7 @@ import Mainmenu from "../components/Mainmenu";
 import axios from "axios";
 import { Stack } from "@mui/system";
 
-
-const MyGrid = styled(Grid, {})({
+export const MyGrid = styled(Grid, {})({
   display: "flex",
   justifyContent: "center",
   backgroundImage: 'linear-gradient(to right bottom, #430089, #82ffa1)'
@@ -14,9 +13,9 @@ const MyGrid = styled(Grid, {})({
 const Home = () => {
   // states
   const [videoItems, setVideoItems] = useState([]);
-  const [headers, setHeaders] = useState([])
+  // const [headers, setHeaders] = useState([])
 
-  const options = {
+const options = {
     url: "https://youtube-v31.p.rapidapi.com/search",
     params: {
       relatedToVideoId: "dT03l2fbEnU",
@@ -43,8 +42,8 @@ const Home = () => {
   return (
     <Mainmenu>
       <>
-        {/* <Grid container>
-          <Grid item xs={12}> */}
+        
+              <Typography variant="h4">New Videos</Typography>
             <MyGrid container rowGap={3} columnGap={8}>
               {videoItems?.map((item) => {
                 return (
@@ -61,14 +60,14 @@ const Home = () => {
                           allowFullScreen="true"
                         ></iframe>
                         {/* <Typography>{`Video id: ${item?.id?.videoId}`}</Typography> */}
+                        <Typography>{`Date: ${item?.snippet?.publishTime}`}</Typography>
                       </Stack>
                     </Paper>
                   </Grid>
                 );
               })}
             </MyGrid>
-          {/* </Grid>
-        </Grid> */}
+         
       </>
     </Mainmenu>
   );
