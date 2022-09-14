@@ -18,7 +18,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import PersonIcon from '@mui/icons-material/Person';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HistoryIcon from '@mui/icons-material/History';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -101,11 +108,53 @@ export default function MiniDrawer(props) {
     setOpen(false);
   };
 
+  const sets = [
+    {
+      title: "Home",
+      to: "/",
+      icon: <HomeIcon/>
+    },
+    {
+      title: "Saved",
+      to: "/saved",
+      icon: <VideoLibraryIcon/>
+    },
+    {
+      title: "Music",
+      to: "/music",
+      icon: <LibraryMusicIcon/>
+    },
+    {
+      title: "People",
+      to: "/people",
+      icon: <PersonIcon/>
+    },
+  ]
+
+  const set2 = [
+    {
+      title: "History",
+      to: "/history",
+      icon: <HistoryIcon/>
+    },
+    {
+      title: "Settings",
+      to: "/settings",
+      icon: <SettingsIcon/>
+    },
+    {
+      title: "Gaming",
+      to: "/gaming",
+      icon: <SportsEsportsIcon/>
+    },
+  ]
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar sx={{backgroundColor: "#202DB8", color:"white"}}>
+        <Toolbar sx={{
+          // backgroundColor: "#202DB8",
+         color:"white"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -118,8 +167,8 @@ export default function MiniDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            My Youtube
+          <Typography variant="h6" noWrap component="div" >
+            MYoutube
           </Typography>
         </Toolbar>
       </AppBar>
@@ -129,10 +178,12 @@ export default function MiniDrawer(props) {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
+          <img src='https://www.freepnglogos.com/uploads/youtube-logo-hd-8.png'/>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {sets?.map((text, index) => (
+            <Link to={text.to} style={{textDecoration: "none", color: "#DC143D"}}>
+            <ListItem key={text.title} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -147,17 +198,19 @@ export default function MiniDrawer(props) {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {text.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text.title} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {set2.map((text, index) => (
+            <Link to={text.to} style={{textDecoration: "none", color: "#DC143D"}}>
+            <ListItem key={text.title} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -172,11 +225,12 @@ export default function MiniDrawer(props) {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {text.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text.title} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

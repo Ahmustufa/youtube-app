@@ -14,6 +14,7 @@ const MyGrid = styled(Grid, {})({
 const Home = () => {
   // states
   const [videoItems, setVideoItems] = useState([]);
+  const [headers, setHeaders] = useState([])
 
   const options = {
     url: "https://youtube-v31.p.rapidapi.com/search",
@@ -24,7 +25,7 @@ const Home = () => {
       maxResults: "10",
     },
     headers: {
-      "X-RapidAPI-Key": "a895a0f46emsh95461a8c9582dc0p15e193jsn839588c5daeb",
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
       "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
     },
   };
