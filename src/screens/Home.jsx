@@ -48,10 +48,10 @@ const Home = () => {
   // async function calling youtube api, destruction array of objects and storing in usestate
   const getVideos = async () => {
     const res = await axios.request(options);
-    console.log("res :>> ", res);
+    // console.log("res :>> ", res);
     const { items } = res.data;
     setVideoItems(items);
-    console.log('videoItems', videoItems)
+    // console.log('videoItems', videoItems)
   };
   useEffect(() => {
     getVideos();

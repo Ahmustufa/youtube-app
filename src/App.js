@@ -29,7 +29,7 @@ function App() {
         <Route path="/settings" element={<Settings/>}/>
         <Route path="/library" element={<Library/>}/>
         <Route path="/people" element={<People/>}/>
-        <Route path="/videoplayer/id" element={<VideoPlayer/>}/>
+        <Route path="/videoplayer/:id" element={<VideoPlayer/>}/>
       </Routes>
       </BrowserRouter>
     </ThemeProvider>

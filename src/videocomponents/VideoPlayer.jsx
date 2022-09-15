@@ -11,16 +11,18 @@ import { useParams } from "react-router-dom";
 
 
 const VideoPlayer = () => {
-
   const {id} = useParams()
-  console.log('id :>> ', id);  
-  const [videoItem, setVideoItem] = useState([]);
+  console.log('videoid :>> ', id);  
 
+  const [videoItem, setVideoItem] = useState("");
+  
   const getVideo = async () => {
     const res = await axios.request(options);
-    const { items } = res.data;
-    setVideoItem(items);
-    console.log("videoItems", videoItem);
+    const { id } = res.data.items;
+    console.log('id', id)
+    // const video = videoItem.find((item)=>item.id === parseInt(id))
+    // console.log('video :>> ', video);
+    setVideoItem();
   };
   useEffect(() => {
     getVideo()
@@ -37,14 +39,14 @@ const VideoPlayer = () => {
           );
         })}
       </MyGrid2>
-      {videoItem?.map((item) => {
-        return (
+      
+      
           <MyGrid container>
-            <Grid item xs={12}>
+            <Grid item xs={4}>
               <iframe
                 max-width="470"
                 height="315"
-                src={`https://www.youtube.com/embed/${item}`}
+                src={`https://www.youtube.com/embed/${videoItem}`}
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -52,8 +54,8 @@ const VideoPlayer = () => {
               ></iframe>
             </Grid>
           </MyGrid>
-        );
-      })}
+       
+     
     </>
   );
 };
