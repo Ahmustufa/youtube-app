@@ -9,6 +9,7 @@ import Gaming from "./screens/Gaming";
 import Settings from "./screens/Settings";
 import Library from "./screens/Library";
 import People from "./screens/People";
+import VideoPlayer from "./videocomponents/VideoPlayer";
 function App() {
   const darkTheme = createTheme({
     palette: {
@@ -27,7 +28,8 @@ function App() {
         <Route path="/saved" element={<Saved/>}/>
         <Route path="/settings" element={<Settings/>}/>
         <Route path="/library" element={<Library/>}/>
-        <Route path="people" element={<People/>}/>
+        <Route path="/people" element={<People/>}/>
+        <Route path="/videoplayer/id" element={<VideoPlayer/>}/>
       </Routes>
       </BrowserRouter>
     </ThemeProvider>
