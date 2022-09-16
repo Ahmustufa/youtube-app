@@ -58,7 +58,8 @@ const searchField = (e)=>{
       setValues(value)
     }
   return (
-    <MySearch onChange={searchField()}>
+    <>
+    <MySearch onChange={searchField}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -67,6 +68,7 @@ const searchField = (e)=>{
               inputProps={{ 'aria-label': 'search' }}
             />
     </MySearch>
+    </>
   )
 }
 
